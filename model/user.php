@@ -11,7 +11,7 @@ function get_user_by_id($id)
 
 function get_user_by_username($username)
 {
-    $data = find_one_secure("SELECT * FROM users WHERE username = :username",
+    $data = find_one_secure("SELECT * FROM users WHERE username = :username ",
                             ['username' => $username]);
     return $data;
 }
@@ -47,6 +47,7 @@ function user_register($data)
     $user['username'] = $data['username'];
     $user['password'] = user_hash($data['password']);
     $user['email'] = $data['email'];
+    mkdir ('uploads/' . $user['username']);
     db_insert('users', $user);
 }
 
@@ -71,5 +72,55 @@ function user_login($username)
     if ($data === false)
         return false;
     $_SESSION['user_id'] = $data['id'];
+    $_SESSION['user_username'] = $data['username'];
     return true;
 }
+
+function upload_img_profil()
+{
+    /*if (($_FILES["file"]["type"] == "image/jpg")
+        || ($_FILES["file"]["type"] == "image/jpeg")){
+
+        if (file_exists("img/" . $_FILES["file"]["name"])) {
+            //echo "Le fichier existe deja";
+            //echo '<meta http-equiv="refresh" content="1;URL=profil.php">';
+        }
+        else {
+            if (move_uploaded_file($_FILES["file"]["tmp_name"],
+                "img/" . $_FILES["file"]["name"]))
+            {*/
+
+        if (isset($_POST['upload'])){
+                $files['nom_fichier'] = $_FILES["file"]['name'];
+                $files['url_fichier'] =  'uploads/'.$_SESSION['user_username'] . '/' . $files["nom_fichier"];
+                $files['id_users'] = $_SESSION['user_id'];
+                db_insert('files', $files);
+
+                move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
+
+            return true;
+        }
+            /*
+        }
+    }
+    else {
+        echo 'Erreur fichier non conforme';
+        echo '<meta http-equiv="refresh" content="1;URL=profil.php">';
+    }*/
+}
+
+function show_upload_img()
+{
+    $id_users = $_SESSION['user_id'];
+    $data = find_all_secure("SELECT * FROM files WHERE id_users = :id_users ",
+        ['id_users' => $id_users]);
+    return $data;
+}
+
+/*function one_only_img()
+{
+    $id_users = $_SESSION['user_id'];
+    $reqidimg = find_one_secure("SELECT * FROM files WHERE `id_users` = :user_id",
+        ['user_id' => $user_id]);
+    return $reqidimg;
+}*/

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Home page</title>
+        <title>Uptofiles</title>
         <link rel="stylesheet" href="web/style.css">
     </head>
     <body>
@@ -10,9 +10,30 @@
             <ul>
                 <li><a href='?action=home'>Homepage</a></li>
                 <li><a href='?action=profil'>My files</a></li>
-                <li><a href='?action=logout'>Log out</a></li>
+                <li><a href='?action=logout'><img class="img_nav" src="web/logout.png">Log out</a></li>
             </ul>
         </nav>
-        Hello <?php echo $username ?>, this is a template
+        <main>
+            <div class="flex_home">
+                <div class="colum_container">
+                    <p>coucou</p>
+                </div>
+                <div class="column_profil">
+                    <h2 class="title_profil">Profil</h2>
+                    <img class="img_profil" src="web/user.png">
+                    <div>
+                        <p class="categorie">Username :</p>
+                        <p><?php echo $username ?></p>
+                        <p class="categorie">Firstname :</p>
+                        <p><?php echo $firstname ?></p>
+                        <p class="categorie">Lastname :</p>
+                        <p><?php echo $lastname ?></p>
+                        <p class="categorie">Email :</p>
+                        <p><?php echo $email ?></p>
+                    </div>
+                    <a class="text_deco" href='?action=profil'><p class="button_to_profil">Votre espace</p></a>
+                </div>
+            </div>
+        </main>
     </body>
 </html>

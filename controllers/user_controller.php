@@ -42,7 +42,15 @@ function register_action()
     }
     require('views/register.php');
 }
+
 function profil_action()
 {
+    $message = '';
+    if (upload_img_profil()){
+        $message = "on est dans le if";
+    }
+    $result = show_upload_img();
+
     require('views/profil.php');
 }
+

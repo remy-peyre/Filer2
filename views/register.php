@@ -14,10 +14,11 @@
                 <legend><span class="number">1</span>Register</legend>
                 Firstname : <input type="text" name="firstname"><br>
                 Lastname : <input type="text" name="lastname"><br>
-                Login : <input type="text" name="username"><br>
+                Username :<span class="obligation">*</span><span class="condition_register">(au moins 6 caractères)</span><input type="text" name="username"><br>
                 Email : <input type="text" name="email"><br>
-                Password : <input type="password" name="password"><br>
+                Password : <span class="obligation">*</span><input type="password" name="password"><br>
                 <input type="submit">
+                <span>Or</span><a href='?action=login'>LOG IN</a>
             </div>
         </form>
     </body>

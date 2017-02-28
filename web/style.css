@@ -48,6 +48,13 @@ li a {
 .register{
     text-align: center;
 }
+.obligation{
+    color: red;
+}
+.condition_register{
+    color: #5a5a5a;
+    margin-left: 237px;
+}
 .form-style-5{
     max-width: 500px;
     padding: 10px 20px;
@@ -154,4 +161,106 @@ li a {
 /*------ LOGIN ------*/
 .login{
     margin-bottom: 10%;
+}
+.button_action-register{
+    background-color: #3B5998;
+}
+h3{
+    margin-bottom: 50px;
+}
+/*--------- HOME ----------*/
+main{
+    width: 100%;
+    height: 100%;
+}
+.flex_home{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.colum_container{
+    width: 60%;
+    height: 100%;
+    background: white;
+    margin-top: 20px;
+
+}
+.column_profil{
+    width: 30%;
+    height: 100%;
+    background-color: #3B5998;
+    margin-top: 20px;
+    text-align: center;
+}
+tr{
+    width: 100%;
+}
+.title_profil{
+    color: white;
+    margin-bottom: 10px;
+}
+.img_profil{
+    width: 100px;
+}
+.categorie{
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.button_to_profil{
+    padding: 8px 10px 8px 10px;
+    border: 1px solid #8a8a8a;
+    margin: 15px 40px;
+    color: white;
+    border-radius: 10px;
+}
+.button_to_profil:hover {
+    background: #F9F9F9;
+    color: #3B5998;
+    border-color: #8a8a8a;
+}
+.text_deco{
+    text-decoration: none;
+
+}
+/*--------- navbar -----------*/
+.img_nav{
+    width: 16px;
+    height: 13px;
+}
+/*--------- PROFILE ----------*/
+.flex_profil{
+    display: flex;
+    margin-left: 10%;
+    margin-top: 25px;
+    width: 80%;
+}
+.actions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+.img_upload{
+    width: 100px;
+    height: 100px;
+}
+.contenu_profil{
+    width: 100%;
+}
+.size_upload{
+    width: 15%;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 20px;
 }
