@@ -48,8 +48,13 @@ function profil_action()
     $message = '';
     if (upload_img_profil()){
         $message = "on est dans le if";
+
+        /*if (one_only_img()){
+            $message = "ce fichier existe deja"
+        }*/
     }
     $result = show_upload_img();
+
 
     require('views/profil.php');
 }

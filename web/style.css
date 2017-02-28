@@ -240,6 +240,15 @@ tr{
     margin-top: 25px;
     width: 80%;
 }
+.p_action{
+    text-align: center;
+    color: #3B5998;
+    font-size: 20px;
+    border-bottom: 1px solid #3B5998;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+}
 .actions{
     display: flex;
     flex-direction: row;
@@ -247,6 +256,9 @@ tr{
     justify-content: flex-start;
     align-items: stretch;
     align-content: stretch;
+    border-bottom: 1px solid #3B5998;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 .img_upload{
     width: 100px;

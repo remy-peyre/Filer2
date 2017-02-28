@@ -94,11 +94,12 @@ function upload_img_profil()
                 $files['nom_fichier'] = $_FILES["file"]['name'];
                 $files['url_fichier'] =  'uploads/'.$_SESSION['user_username'] . '/' . $files["nom_fichier"];
                 $files['id_users'] = $_SESSION['user_id'];
-                db_insert('files', $files);
 
-                move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
-
-            return true;
+                if(!one_only_img($files['nom_fichier'])) {
+                    db_insert('files', $files);
+                    move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
+                    return true;
+                }
         }
             /*
         }
@@ -117,10 +118,27 @@ function show_upload_img()
     return $data;
 }
 
-/*function one_only_img()
+function get_user_by_nom_fichier($nom_fichier)
 {
     $id_users = $_SESSION['user_id'];
-    $reqidimg = find_one_secure("SELECT * FROM files WHERE `id_users` = :user_id",
-        ['user_id' => $user_id]);
-    return $reqidimg;
-}*/
+    $data = find_one_secure("SELECT * FROM files WHERE `nom_fichier` = :nom_fichier AND 
+                `id_users` = :id_users",
+            ['user_id' => $id_users,
+            'nom_fichier' => $nom_fichier]);
+    return $data;
+}
+
+
+
+function one_only_img($nom_fichier)
+{
+    $id_users = $_SESSION['user_id'];
+    $reqidimg = find_one_secure("SELECT * FROM files WHERE `nom_fichier` = :nom_fichier AND 
+                `id_users` = :user_id",
+        ['user_id' => $id_users,
+         'nom_fichier' => $nom_fichier]);
+    if ($reqidimg == true){
+        return true;
+
+    }
+}

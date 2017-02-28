@@ -15,7 +15,7 @@
         </nav>
         <div class="flex_profil">
             <div class="contenu_profil">
-                <p>Actions</p>
+                <p class="p_action">Actions</p>
                 <div class="actions">
                     <form method="POST" enctype="multipart/form-data" action="?action=profil">
                         <p>Uniquement fichier .jpg / .jpeg / .png / .pdf / .txt
