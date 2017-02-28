@@ -47,6 +47,8 @@ function user_register($data)
     $user['username'] = $data['username'];
     $user['password'] = user_hash($data['password']);
     $user['email'] = $data['email'];
+    // create directory by user
+
     mkdir ('uploads/' . $user['username']);
     db_insert('users', $user);
 }
@@ -118,6 +120,8 @@ function show_upload_img()
     return $data;
 }
 
+
+//
 function get_user_by_nom_fichier($nom_fichier)
 {
     $id_users = $_SESSION['user_id'];
@@ -127,9 +131,7 @@ function get_user_by_nom_fichier($nom_fichier)
             'nom_fichier' => $nom_fichier]);
     return $data;
 }
-
-
-
+// cherche fichier par son nom
 function one_only_img($nom_fichier)
 {
     $id_users = $_SESSION['user_id'];
@@ -139,6 +141,22 @@ function one_only_img($nom_fichier)
          'nom_fichier' => $nom_fichier]);
     if ($reqidimg == true){
         return true;
+    }
+}
 
+
+function delete_one_upload()
+{
+    if (isset($_POST['supprimer'])) {
+
+        $nom_fichier = $_POST['sup_fichier'];
+        $id_users = $_SESSION['user_id'];
+        if (!(delete_one_upload_file("DELETE FROM files WHERE nom_fichier = :nom_fichier AND 
+            `id_users` = :user_id",
+            ['user_id' => $id_users,
+                'nom_fichier' => $nom_fichier]))){
+            unlink($nom_fichier);
+            return true;
+        }
     }
 }

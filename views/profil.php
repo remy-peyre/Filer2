@@ -32,6 +32,11 @@
                         " alt=" . $file['nom_fichier'] . ">";
                         echo '<br>';
                         echo '<span>' . $file ['nom_fichier'] . '</span>';
+                        echo '<form method="POST" action="?action=profil">';
+                            echo '<input type="text" name="sup_fichier" value="'. $file['nom_fichier'].'">';
+                            echo '<br>';
+                            echo '<input type="submit" name="supprimer" value="supprimer">';
+                        echo '</form>';
                     echo '</div>';
                 }
                 ?>

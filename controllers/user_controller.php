@@ -56,6 +56,7 @@ function profil_action()
     $result = show_upload_img();
 
 
+
     require('views/profil.php');
 }
 

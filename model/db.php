@@ -79,3 +79,10 @@ function find_all_secure($query, $data = [])
     return $result;
 }
 
+function delete_one_upload_file($query, $data = [])
+{
+    $dbh = get_dbh();
+    $sth = $dbh->prepare($query);
+    $sth->execute($data);
+    return ($sth->fetch(PDO::FETCH_ASSOC));
+}
