@@ -31,11 +31,17 @@
                         echo "<img class='img_upload' src=" . $file['url_fichier'] .
                         " alt=" . $file['nom_fichier'] . ">";
                         echo '<br>';
-                        echo '<span>' . $file ['nom_fichier'] . '</span>';
+                        echo '<span class="name_img">' . $file ['nom_fichier'] . '</span>';
+                        /*DELETE*/
                         echo '<form method="POST" action="?action=profil">';
-                            echo '<input type="text" name="sup_fichier" value="'. $file['nom_fichier'].'">';
+                            echo '<input style="display: none;" type="text" name="sup_fichier" value="'. $file['nom_fichier'].'">';
                             echo '<br>';
                             echo '<input type="submit" name="supprimer" value="supprimer">';
+                        echo '</form>';
+                        /*UPDATE*/
+                        echo '<form method="POST" action="?action=profil">';
+                            echo '<input type="text" name="rename('. $file['nom_fichier']. '" value="" placeholder="remettre l\'extention">';
+                            echo '<input type="submit" name="renommer" value="renommer">';
                         echo '</form>';
                     echo '</div>';
                 }

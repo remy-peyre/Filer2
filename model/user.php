@@ -80,36 +80,17 @@ function user_login($username)
 
 function upload_img_profil()
 {
-    /*if (($_FILES["file"]["type"] == "image/jpg")
-        || ($_FILES["file"]["type"] == "image/jpeg")){
+    if (isset($_POST['upload'])){
+        $files['nom_fichier'] = $_FILES["file"]['name'];
+        $files['url_fichier'] =  'uploads/'.$_SESSION['user_username'] . '/' . $files["nom_fichier"];
+        $files['id_users'] = $_SESSION['user_id'];
 
-        if (file_exists("img/" . $_FILES["file"]["name"])) {
-            //echo "Le fichier existe deja";
-            //echo '<meta http-equiv="refresh" content="1;URL=profil.php">';
-        }
-        else {
-            if (move_uploaded_file($_FILES["file"]["tmp_name"],
-                "img/" . $_FILES["file"]["name"]))
-            {*/
-
-        if (isset($_POST['upload'])){
-                $files['nom_fichier'] = $_FILES["file"]['name'];
-                $files['url_fichier'] =  'uploads/'.$_SESSION['user_username'] . '/' . $files["nom_fichier"];
-                $files['id_users'] = $_SESSION['user_id'];
-
-                if(!one_only_img($files['nom_fichier'])) {
-                    db_insert('files', $files);
-                    move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
-                    return true;
-                }
-        }
-            /*
+        if(!one_only_img($files['nom_fichier'])) {
+            db_insert('files', $files);
+            move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
+            return true;
         }
     }
-    else {
-        echo 'Erreur fichier non conforme';
-        echo '<meta http-equiv="refresh" content="1;URL=profil.php">';
-    }*/
 }
 
 function show_upload_img()
@@ -144,18 +125,28 @@ function one_only_img($nom_fichier)
     }
 }
 
-
 function delete_one_upload()
 {
     if (isset($_POST['supprimer'])) {
-
         $nom_fichier = $_POST['sup_fichier'];
         $id_users = $_SESSION['user_id'];
-        if (!(delete_one_upload_file("DELETE FROM files WHERE nom_fichier = :nom_fichier AND 
+        if (delete_one_upload_file("DELETE FROM files WHERE nom_fichier = :nom_fichier AND 
             `id_users` = :user_id",
             ['user_id' => $id_users,
-                'nom_fichier' => $nom_fichier]))){
+                'nom_fichier' => $nom_fichier])){
             unlink($nom_fichier);
+            return true;
+        }
+    }
+}
+
+function update_name_img()
+{
+    if (isset($_POST['renommer'])) {
+        $nom_fichier = $_POST['rename'];
+        if (rename_one_upload_file("UPDATE `files` SET
+            `nom_fichier` = :nom_fichier WHERE `nom_fichier` = :nom_fichier",
+            ['nom_fichier' => $nom_fichier])){
             return true;
         }
     }

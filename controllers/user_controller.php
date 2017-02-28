@@ -55,6 +55,8 @@ function profil_action()
     }
     $result = show_upload_img();
 
+    delete_one_upload();
+    rename_one_upload_file();
 
 
     require('views/profil.php');
