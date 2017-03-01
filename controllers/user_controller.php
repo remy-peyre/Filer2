@@ -47,18 +47,22 @@ function profil_action()
 {
     $message = '';
     if (upload_img_profil()){
-        $message = "on est dans le if";
+        $message = "je suis dans le if";
 
         /*if (one_only_img()){
             $message = "ce fichier existe deja"
         }*/
     }
+    delete_one_upload();
+    //update_name_img();
+
+    if (update_name_img()){
+        $message = "je suis dans rename";
+    }
+
     $result = show_upload_img();
 
-    delete_one_upload();
-    rename_one_upload_file();
 
 
     require('views/profil.php');
 }
-

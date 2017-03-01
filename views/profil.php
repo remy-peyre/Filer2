@@ -32,7 +32,8 @@
                         " alt=" . $file['nom_fichier'] . ">";
                         echo '<br>';
                         echo '<span class="name_img">' . $file ['nom_fichier'] . '</span>';
-                        /*DELETE*/
+                        echo '<br>';
+                    /*DELETE*/
                         echo '<form method="POST" action="?action=profil">';
                             echo '<input style="display: none;" type="text" name="sup_fichier" value="'. $file['nom_fichier'].'">';
                             echo '<br>';
@@ -40,9 +41,18 @@
                         echo '</form>';
                         /*UPDATE*/
                         echo '<form method="POST" action="?action=profil">';
-                            echo '<input type="text" name="rename('. $file['nom_fichier']. '" value="" placeholder="remettre l\'extention">';
+                            echo '<input style="display: none;" type="text" name="name_hide" value="'. $file['nom_fichier'].'">';
+                            echo '<input type="text" name="rename" value="" placeholder="'. $file['nom_fichier']. '">';
                             echo '<input type="submit" name="renommer" value="renommer">';
                         echo '</form>';
+                        /*DOWNLOAD*/
+                        /*echo '<a href="' . $file['url_fichier'] . '" download="' . $file['url_fichier'] . '">';
+                            echo '<br>';
+                            echo '<img class='logo_download' id="$rows['file_name']" src='web/download.png' alt='download'/>';
+                        echo '</a>';*/
+
+                        //echo '<a  href='" . $rows['file_url'] . "'   download='" . $rows['file_name'] . "'>';
+
                     echo '</div>';
                 }
                 ?>

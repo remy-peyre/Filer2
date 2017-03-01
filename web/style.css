@@ -263,6 +263,7 @@ tr{
 .img_upload{
     width: 100px;
     height: 100px;
+    display: block;
 }
 .contenu_profil{
     width: 100%;
@@ -277,5 +278,5 @@ tr{
     margin-top: 20px;
 }
 .name_img{
-
+    display: block;
 }

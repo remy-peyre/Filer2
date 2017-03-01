@@ -78,6 +78,7 @@ function user_login($username)
     return true;
 }
 
+//UPLOAD
 function upload_img_profil()
 {
     if (isset($_POST['upload'])){
@@ -92,7 +93,7 @@ function upload_img_profil()
         }
     }
 }
-
+//SHOW
 function show_upload_img()
 {
     $id_users = $_SESSION['user_id'];
@@ -101,8 +102,7 @@ function show_upload_img()
     return $data;
 }
 
-
-//
+//FIND FILES is exist
 function get_user_by_nom_fichier($nom_fichier)
 {
     $id_users = $_SESSION['user_id'];
@@ -125,6 +125,7 @@ function one_only_img($nom_fichier)
     }
 }
 
+//DELETE
 function delete_one_upload()
 {
     if (isset($_POST['supprimer'])) {
@@ -140,13 +141,18 @@ function delete_one_upload()
     }
 }
 
+//UPDATE
 function update_name_img()
 {
     if (isset($_POST['renommer'])) {
-        $nom_fichier = $_POST['rename'];
-        if (rename_one_upload_file("UPDATE `files` SET
-            `nom_fichier` = :nom_fichier WHERE `nom_fichier` = :nom_fichier",
-            ['nom_fichier' => $nom_fichier])){
+        $rename = $_POST['rename'];
+        $name_hide = $_POST['name_hide'];
+        $id_users = $_SESSION['user_id'];
+        if (rename_one_upload_file("UPDATE `files` SET `nom_fichier` = :nom_rename 
+            WHERE nom_fichier = :nom_old AND `id_users` = :user_id ",
+            ['user_id' => $id_users,
+                'nom_rename' => $rename,
+                'nom_old' => $name_hide])){
             return true;
         }
     }
