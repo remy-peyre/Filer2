@@ -141,7 +141,7 @@ function delete_one_upload()
     }
 }
 
-//UPDATE
+//RENAME
 function update_name_img()
 {
     if (isset($_POST['renommer'])) {
@@ -162,15 +162,28 @@ function update_name_img()
 function replace_name_img()
 {
     if (isset($_POST['remplacer'])) {
-
-
+        $replace = $_FILES["new_files"]['name'];
+        $select_file_to_replace = $_POST['replace_files'];
         $id_users = $_SESSION['user_id'];
-        if (replace_one_upload_file("UPDATE `files` SET `nom_fichier` = :nom_rename 
-            WHERE nom_fichier = :nom_old AND `id_users` = :user_id ",
+        $new_url = 'uploads/'.$_SESSION['user_username'] . '/' . $replace;
+        echo $replace;
+        echo '<br>';
+        echo $select_file_to_replace;
+        echo '<br>';
+        echo $new_url;
+        if (replace_one_upload_file("UPDATE `files` SET `nom_fichier` = :new_files/*, `url_fichier` = :new_url_files*/
+            WHERE `nom_fichier` = :old_files AND `id_user` = :user_id",
             ['user_id' => $id_users,
-                'nom_rename' => $rename,
-                'nom_old' => $name_hide])){
+                'old_files' => $select_file_to_replace,
+                'new_files' => $replace/*,
+                'new_url_files' => $new_url*/])){
+            //move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
             return true;
         }
     }
 }
+
+/*
+$req_name = "UPDATE files SET `file_name` = :new_file_name  WHERE `id` = :id";
+$req_url = "UPDATE `files` SET `file_url` = :new_file_url  WHERE `id` = :id";
+*/

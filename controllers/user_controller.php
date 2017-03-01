@@ -57,8 +57,9 @@ function profil_action()
 
     update_name_img();
 
-    $result = show_upload_img();
+    replace_name_img();
 
+    $result = show_upload_img();
 
 
     require('views/profil.php');

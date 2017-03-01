@@ -284,3 +284,8 @@ tr{
     width: 25px;
     height: 25px;
 }
+.form_replace{
+    border-left: 3px solid #3B5998;
+    padding-left: 5px;
+    margin-left: 5px;
+}

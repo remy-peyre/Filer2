@@ -17,11 +17,22 @@
             <div class="contenu_profil">
                 <p class="p_action">Actions</p>
                 <div class="actions">
-                    <form method="POST" enctype="multipart/form-data" action="?action=profil">
+                    <form method="POST" action="?action=profil" enctype="multipart/form-data">
+                        <p>UPLOAD :</p>
                         <p>Uniquement fichier .jpg / .jpeg / .png / .pdf / .txt
                             <br>
                             <input type="file" name="file">
                             <input type="submit" name="upload" value="uploader">
+                        </p>
+                    </form>
+                    <!--REPLACE-->
+                    <form class="form_replace" method="POST" action="?action=profil" enctype="multipart/form-data">
+                        <p>REPLACE :
+                            <br>
+                            <input type="file" name="new_files">
+                            <br>
+                            <input type="text" name="replace_files" placeholder="nom du fichier">
+                            <input type="submit" value="remplacer" name="remplacer">
                         </p>
                     </form>
                 </div>
@@ -50,13 +61,7 @@
                             echo '<br>';
                             echo '<img class="logo_download" src="assets/download.png" alt="download"/>';
                         echo '</a>';
-                        /*REPLACE*/
-                        echo '<form  method="POST" action="?action=profil" enctype="multipart/form-data">';
-                            echo '<input type="file" name="new_files"><br>';
-                            echo '<br>';
-                            echo '<input style="display: none;" type="text" name="replace_files" placeholder="nom du fichier"><br>';
-                            echo '<input type="submit" value="remplacer">';
-                        echo '</form>';
+
 
                     echo '</div>';
                 }
