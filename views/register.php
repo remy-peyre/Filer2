@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Home page</title>
-        <link rel="stylesheet" href="web/style.css">
-    </head>
+        <link rel="stylesheet" href="assets/style.css"
     <body>
         <?php if (!empty($error)): ?>
         <p>Error : <?php echo $error ?></p>

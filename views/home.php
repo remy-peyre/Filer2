@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Uptofiles</title>
-        <link rel="stylesheet" href="web/style.css">
+        <link rel="stylesheet" href="assets/style.css">
     </head>
     <body>
         <nav>
             <ul>
                 <li><a href='?action=home'>Homepage</a></li>
                 <li><a href='?action=profil'>My files</a></li>
-                <li><a href='?action=logout'><img class="img_nav" src="web/logout.png">Log out</a></li>
+                <li><a href='?action=logout'><img class="img_nav" src="assets/logout.png">Log out</a></li>
             </ul>
         </nav>
         <main>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="column_profil">
                     <h2 class="title_profil">Profil</h2>
-                    <img class="img_profil" src="web/user.png">
+                    <img class="img_profil" src="assets/user.png">
                     <div>
                         <p class="categorie">Username :</p>
                         <p><?php echo $username ?></p>

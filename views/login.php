@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Login</title>
-        <link rel="stylesheet" href="web/style.css">
+        <link rel="stylesheet" href="assets/style.css">
     </head>
     <body>
         <?php if (!empty($error)): ?>

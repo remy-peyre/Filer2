@@ -54,11 +54,8 @@ function profil_action()
         }*/
     }
     delete_one_upload();
-    //update_name_img();
 
-    if (update_name_img()){
-        $message = "je suis dans rename";
-    }
+    update_name_img();
 
     $result = show_upload_img();
 

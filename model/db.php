@@ -86,16 +86,15 @@ function delete_one_upload_file($query, $data = [])
     $sth->execute($data);
     return ($sth->fetch(PDO::FETCH_ASSOC));
 }
-/*
-function delete_upload($delete)
+
+function rename_one_upload_file($query, $data = [])
 {
     $dbh = get_dbh();
-    $delete = "DELETE FROM files WHERE `nom_fichier` = :nom_fichier AND `id_users` = :user_id";
-    $delete_file = $dbh->prepare($delete);
-    $delete_file->execute($delete);
+    $sth = $dbh->prepare($query);
+    $sth->execute($data);
     return ($sth->fetch(PDO::FETCH_ASSOC));
-}*/
-function rename_one_upload_file($query, $data = [])
+}
+function replace_one_upload_file($query, $data = [])
 {
     $dbh = get_dbh();
     $sth = $dbh->prepare($query);

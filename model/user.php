@@ -47,8 +47,8 @@ function user_register($data)
     $user['username'] = $data['username'];
     $user['password'] = user_hash($data['password']);
     $user['email'] = $data['email'];
-    // create directory by user
 
+    // create directory by user
     mkdir ('uploads/' . $user['username']);
     db_insert('users', $user);
 }
@@ -149,6 +149,23 @@ function update_name_img()
         $name_hide = $_POST['name_hide'];
         $id_users = $_SESSION['user_id'];
         if (rename_one_upload_file("UPDATE `files` SET `nom_fichier` = :nom_rename 
+            WHERE nom_fichier = :nom_old AND `id_users` = :user_id ",
+            ['user_id' => $id_users,
+                'nom_rename' => $rename,
+                'nom_old' => $name_hide])){
+            return true;
+        }
+    }
+}
+
+//REPLACE
+function replace_name_img()
+{
+    if (isset($_POST['remplacer'])) {
+
+
+        $id_users = $_SESSION['user_id'];
+        if (replace_one_upload_file("UPDATE `files` SET `nom_fichier` = :nom_rename 
             WHERE nom_fichier = :nom_old AND `id_users` = :user_id ",
             ['user_id' => $id_users,
                 'nom_rename' => $rename,

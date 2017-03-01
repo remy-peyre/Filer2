@@ -280,3 +280,7 @@ tr{
 .name_img{
     display: block;
 }
+.logo_download{
+    width: 25px;
+    height: 25px;
+}

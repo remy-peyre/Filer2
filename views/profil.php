@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Uptofiles</title>
-        <link rel="stylesheet" href="web/style.css">
+        <link rel="stylesheet" href="assets/style.css">
     </head>
     <body>
         <nav>
             <ul>
                 <li><a href='?action=home'>Homepage</a></li>
                 <li><a href='?action=profil'>My files</a></li>
-                <li><a href='?action=logout'><img class="img_nav" src="web/logout.png">Log out</a></li>
+                <li><a href='?action=logout'><img class="img_nav" src="assets/logout.png">Log out</a></li>
             </ul>
         </nav>
         <div class="flex_profil">
@@ -33,7 +33,7 @@
                         echo '<br>';
                         echo '<span class="name_img">' . $file ['nom_fichier'] . '</span>';
                         echo '<br>';
-                    /*DELETE*/
+                        /*DELETE*/
                         echo '<form method="POST" action="?action=profil">';
                             echo '<input style="display: none;" type="text" name="sup_fichier" value="'. $file['nom_fichier'].'">';
                             echo '<br>';
@@ -46,12 +46,17 @@
                             echo '<input type="submit" name="renommer" value="renommer">';
                         echo '</form>';
                         /*DOWNLOAD*/
-                        /*echo '<a href="' . $file['url_fichier'] . '" download="' . $file['url_fichier'] . '">';
+                        echo '<a href="' . $file['url_fichier'] . '" download="' . $file['nom_fichier'] . '">';
                             echo '<br>';
-                            echo '<img class='logo_download' id="$rows['file_name']" src='web/download.png' alt='download'/>';
-                        echo '</a>';*/
-
-                        //echo '<a  href='" . $rows['file_url'] . "'   download='" . $rows['file_name'] . "'>';
+                            echo '<img class="logo_download" src="assets/download.png" alt="download"/>';
+                        echo '</a>';
+                        /*REPLACE*/
+                        echo '<form  method="POST" action="?action=profil" enctype="multipart/form-data">';
+                            echo '<input type="file" name="new_files"><br>';
+                            echo '<br>';
+                            echo '<input style="display: none;" type="text" name="replace_files" placeholder="nom du fichier"><br>';
+                            echo '<input type="submit" value="remplacer">';
+                        echo '</form>';
 
                     echo '</div>';
                 }
