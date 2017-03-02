@@ -289,3 +289,12 @@ tr{
     padding-left: 5px;
     margin-left: 5px;
 }
+.show_home{
+    width: 100%;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 20px;
+}

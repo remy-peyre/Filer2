@@ -116,8 +116,8 @@ function watch_action_log($file, $text){
     fwrite($file_log, $text);
     fclose($file_log);
 }
-
- function show_all_img_upload()
+/*
+function show_all_img_upload()
 {
     /*$files['nom_fichier'] = $_FILES["file"]['name'];
     //$files['url_fichier'] =  'uploads/'.$_SESSION['user_username'] . '/' . $files["nom_fichier"];
@@ -126,8 +126,16 @@ function watch_action_log($file, $text){
     $data = find_all_secure("SELECT * FROM files WHERE `nom_fichier` = :nom_fichier ",
         ['id_users' => $files['nom_fichier']]);
     return $data;*/
-    $id_users = $_SESSION['user_id'];
+    /*$id_users = $_SESSION['user_id'];
     $data = find_all_secure("SELECT * FROM files WHERE id_users = :id_users ",
         ['id_users' => $id_users]);
+    return $data;
+}
+*/
+function show_all_img_upload()
+{
+    //$id_users = $_SESSION['user_id'];
+    $data = find_all_secure("SELECT * FROM files /*WHERE id_users = :id_users*/ "
+    /*['id_users' => $id_users]*/);
     return $data;
 }
