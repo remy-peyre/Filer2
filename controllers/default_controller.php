@@ -14,9 +14,10 @@ function home_action()
         $firstname = $user['firstname'];
         $lastname = $user['lastname'];
         $email = $user['email'];
-        
+
+        $result_home = show_all_img_upload();
+
         require('views/home.php');
-        //require('views/profil.php');
     }
     else {
         header('Location: ?action=login');
@@ -34,3 +35,5 @@ function contact_action()
 {
     require('views/contact.html');
 }
+
+//SHOW ALL IMG HOME

@@ -17,6 +17,18 @@
             <div class="flex_home">
                 <div class="colum_container">
                     <p>All uploads</p>
+                    <div>
+                        <!--<?php
+                        foreach($result_home as $file){
+                            echo "<div class='size_upload'>";
+                            echo "<img class='img_upload' src=" . $file['url_fichier'] .
+                                " alt=" . $file['nom_fichier'] . ">";
+                            echo '<br>';
+                            echo '<span class="name_img">' . $file ['nom_fichier'] . '</span>';
+                            echo '<br>';
+                        }
+                        ?>-->
+                    </div>
                 </div>
                 <div class="column_profil">
                     <h2 class="title_profil">Profil</h2>

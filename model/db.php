@@ -79,6 +79,8 @@ function find_all_secure($query, $data = [])
     return $result;
 }
 
+/*ACTIONS*/
+
 function delete_one_upload_file($query, $data = [])
 {
     $dbh = get_dbh();
@@ -113,4 +115,19 @@ function watch_action_log($file, $text){
     $file_log = fopen('logs/' . $file, 'a');
     fwrite($file_log, $text);
     fclose($file_log);
+}
+
+ function show_all_img_upload()
+{
+    /*$files['nom_fichier'] = $_FILES["file"]['name'];
+    //$files['url_fichier'] =  'uploads/'.$_SESSION['user_username'] . '/' . $files["nom_fichier"];
+
+    //$id_users = $_SESSION['user_id'];
+    $data = find_all_secure("SELECT * FROM files WHERE `nom_fichier` = :nom_fichier ",
+        ['id_users' => $files['nom_fichier']]);
+    return $data;*/
+    $id_users = $_SESSION['user_id'];
+    $data = find_all_secure("SELECT * FROM files WHERE id_users = :id_users ",
+        ['id_users' => $id_users]);
+    return $data;
 }
