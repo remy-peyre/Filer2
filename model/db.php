@@ -94,10 +94,23 @@ function rename_one_upload_file($query, $data = [])
     $sth->execute($data);
     return ($sth->fetch(PDO::FETCH_ASSOC));
 }
+
 function replace_one_upload_file($query, $data = [])
 {
     $dbh = get_dbh();
     $sth = $dbh->prepare($query);
     $sth->execute($data);
     return ($sth->fetch(PDO::FETCH_ASSOC));
+}
+
+function give_me_date(){
+    $date = date("d-m-Y");
+    $heure = date("H:i");
+    return $date . " " . $heure;
+}
+
+function watch_action_log($file, $text){
+    $file_log = fopen('logs/' . $file, 'a');
+    fwrite($file_log, $text);
+    fclose($file_log);
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <title>Uptofiles</title>
@@ -19,7 +19,7 @@
                 <div class="actions">
                     <form method="POST" action="?action=profil" enctype="multipart/form-data">
                         <p>UPLOAD :</p>
-                        <p>Uniquement fichier .jpg / .jpeg / .png / .pdf / .txt
+                        <p>Fichier .jpg / .jpeg / .png / .pdf / .txt / .mp3 / .mp4
                             <br>
                             <input type="file" name="file">
                             <input type="submit" name="upload" value="uploader">
@@ -61,8 +61,6 @@
                             echo '<br>';
                             echo '<img class="logo_download" src="assets/download.png" alt="download"/>';
                         echo '</a>';
-
-
                     echo '</div>';
                 }
                 ?>

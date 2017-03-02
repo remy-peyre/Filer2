@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <title>Uptofiles</title>
@@ -16,7 +16,7 @@
         <main>
             <div class="flex_home">
                 <div class="colum_container">
-                    <p>coucou</p>
+                    <p>All uploads</p>
                 </div>
                 <div class="column_profil">
                     <h2 class="title_profil">Profil</h2>

@@ -51,6 +51,11 @@ function user_register($data)
     // create directory by user
     mkdir ('uploads/' . $user['username']);
     db_insert('users', $user);
+
+    $date = give_me_date();
+    $actions = $date . ' -- ' .$user['username'] . ' has just registered.' ."\n";
+    watch_action_log('access.log',$actions);
+
 }
 
 function user_check_login($data)
@@ -75,6 +80,11 @@ function user_login($username)
         return false;
     $_SESSION['user_id'] = $data['id'];
     $_SESSION['user_username'] = $data['username'];
+
+    $date = give_me_date();
+    $actions = $date . ' -- ' .$_SESSION['user_username'] . ' session start.' ."\n";
+    watch_action_log('access.log',$actions);
+
     return true;
 }
 
@@ -89,6 +99,11 @@ function upload_img_profil()
         if(!one_only_img($files['nom_fichier'])) {
             db_insert('files', $files);
             move_uploaded_file($_FILES["file"]["tmp_name"], $files['url_fichier']);
+
+            $date = give_me_date();
+            $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has upload an image.' ."\n";
+            watch_action_log('access.log',$actions);
+
             return true;
         }
     }
@@ -131,11 +146,18 @@ function delete_one_upload()
     if (isset($_POST['supprimer'])) {
         $nom_fichier = $_POST['sup_fichier'];
         $id_users = $_SESSION['user_id'];
+
+        $date = give_me_date();
+        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has delete an image.' ."\n";
+        watch_action_log('access.log',$actions);
+
         if (delete_one_upload_file("DELETE FROM files WHERE nom_fichier = :nom_fichier AND 
             `id_users` = :user_id",
             ['user_id' => $id_users,
                 'nom_fichier' => $nom_fichier])){
-            unlink($nom_fichier);
+
+            //unlink($nom_fichier);
+
             return true;
         }
     }
@@ -148,11 +170,17 @@ function update_name_img()
         $rename = $_POST['rename'];
         $name_hide = $_POST['name_hide'];
         $id_users = $_SESSION['user_id'];
+
+        $date = give_me_date();
+        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has update an image.' ."\n";
+        watch_action_log('access.log',$actions);
+
         if (rename_one_upload_file("UPDATE `files` SET `nom_fichier` = :nom_rename 
             WHERE nom_fichier = :nom_old AND `id_users` = :user_id ",
             ['user_id' => $id_users,
                 'nom_rename' => $rename,
                 'nom_old' => $name_hide])){
+
             return true;
         }
     }
@@ -171,7 +199,12 @@ function replace_name_img()
         echo $select_file_to_replace;
         echo '<br>';
         echo $new_url;
-        if (replace_one_upload_file("UPDATE `files` SET `nom_fichier` = :new_files/*, `url_fichier` = :new_url_files*/
+
+        $date = give_me_date();
+        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has replace an image.' ."\n";
+        watch_action_log('access.log',$actions);
+
+        if (replace_one_upload_file("UPDATE `files` SET `nom_fichier` = :new_files, /*`url_fichier` = :new_url_files*/
             WHERE `nom_fichier` = :old_files AND `id_user` = :user_id",
             ['user_id' => $id_users,
                 'old_files' => $select_file_to_replace,
@@ -183,7 +216,3 @@ function replace_name_img()
     }
 }
 
-/*
-$req_name = "UPDATE files SET `file_name` = :new_file_name  WHERE `id` = :id";
-$req_url = "UPDATE `files` SET `file_url` = :new_file_url  WHERE `id` = :id";
-*/
