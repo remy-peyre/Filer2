@@ -11,13 +11,13 @@
         <form action="?action=register" method="POST">
             <div class="form-style-5">
                 <legend><span class="number">1</span>Register</legend>
-                Firstname : <input type="text" name="firstname"><br>
-                Lastname : <input type="text" name="lastname"><br>
+                Firstname : <span class="obligation">*</span><input type="text" name="firstname"><br>
+                Lastname : <span class="obligation">*</span><input type="text" name="lastname"><br>
                 Username :<span class="obligation">*</span><span class="condition_register">(au moins 6 caractères)</span><input type="text" name="username"><br>
-                Email : <input type="text" name="email"><br>
+                Email : <span class="obligation">*</span><input type="text" name="email"><br>
                 Password : <span class="obligation">*</span><input type="password" name="password"><br>
                 <input type="submit">
-                <span>Or</span><a href='?action=login'>LOG IN</a>
+                <span>Or </span><a href='?action=login'>LOG IN</a>
             </div>
         </form>
     </body>

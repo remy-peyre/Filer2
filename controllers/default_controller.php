@@ -22,6 +22,7 @@ function home_action()
     else {
         header('Location: ?action=login');
         exit(0);
+
     }
 }
 //Possible modif

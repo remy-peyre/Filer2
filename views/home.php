@@ -16,21 +16,24 @@
         <main>
             <div class="flex_home">
                 <div class="colum_container">
-                    <p>All uploads</p>
-                    <div>
+                    <h4 class="center_title_home">All uploads</h4>
+                    <div class="show_home">
                         <?php
                         foreach($result_home as $file){
-                            echo "<div class='show_home'>";
+                            echo "<div class='size_show_home'>";
                             echo "<img class='img_upload' src=" . $file['url_fichier'] .
                                 " alt=" . $file['nom_fichier'] . ">";
                             echo '<br>';
-                            echo '<span class="name_img">' . $file ['nom_fichier'] . '</span>';
+                            echo '<p class="name_img">' . $file ['nom_fichier'] . '</p>';
                             echo '<br>';
+                            echo '<span class="name_img">Posted by user n°' . $file['id_users'] . '</span>';
+                            echo '<br>';
+                            echo '</div>';
                         }
                         ?>
                     </div>
                 </div>
-                <!--<div class="column_profil">
+                <div class="column_profil">
                     <h2 class="title_profil">Profil</h2>
                     <img class="img_profil" src="assets/user.png">
                     <div>
@@ -44,7 +47,7 @@
                         <p><?php echo $email ?></p>
                     </div>
                     <a class="text_deco" href='?action=profil'><p class="button_to_profil">Votre espace</p></a>
-                </div>-->
+                </div>
             </div>
         </main>
     </body>

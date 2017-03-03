@@ -226,7 +226,23 @@ tr{
 }
 .text_deco{
     text-decoration: none;
-
+}
+.center_title_home{
+    text-align: center;
+    color: #3B5998;
+    margin: 15px 0px 10px 0px;
+}
+.show_home{
+    width: 100%;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 20px;
+}
+.size_show_home{
+    width: 20%;
 }
 /*--------- navbar -----------*/
 .img_nav{
@@ -288,13 +304,4 @@ tr{
     border-left: 2px solid #3B5998;
     padding-left: 5px;
     margin-left: 5px;
-}
-.show_home{
-    width: 100%;
-    display: inline-flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: stretch;
-    margin-top: 20px;
 }

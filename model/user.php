@@ -151,16 +151,16 @@ function delete_one_upload()
         $id_users = $_SESSION['user_id'];
         $delete_file = 'uploads/'.$_SESSION['user_username'] . '/' . $nom_fichier;
 
-        $date = give_me_date();
-        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has delete an image.' ."\n";
-        watch_action_log('access.log',$actions);
-
         if (!delete_one_upload_file("DELETE FROM files WHERE nom_fichier = :nom_fichier AND 
             `id_users` = :user_id",
             ['user_id' => $id_users,
                 'nom_fichier' => $nom_fichier])){
 
             unlink($delete_file);
+
+            $date = give_me_date();
+            $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has delete an image.' ."\n";
+            watch_action_log('access.log',$actions);
 
             return true;
         }
@@ -177,10 +177,6 @@ function update_name_img()
         $new_url = 'uploads/'.$_SESSION['user_username'] . '/' . $rename;
         $old_url = 'uploads/'.$_SESSION['user_username'] . '/' . $name_hide;
 
-        $date = give_me_date();
-        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has update an image.' ."\n";
-        watch_action_log('access.log',$actions);
-
         if (!rename_one_upload_file("UPDATE `files` SET `nom_fichier` = :nom_rename,  `url_fichier` = :new_url
             WHERE nom_fichier = :nom_old AND `id_users` = :user_id ",
             ['user_id' => $id_users,
@@ -189,6 +185,11 @@ function update_name_img()
                 'new_url' => $new_url])){
 
             rename($old_url, $new_url);
+
+            $date = give_me_date();
+            $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has rename an image.' ."\n";
+            watch_action_log('access.log',$actions);
+
             return true;
         }
     }
@@ -205,10 +206,6 @@ function replace_name_img()
         $new_url = 'uploads/'.$_SESSION['user_username'] . '/' . $replace;
         $old_url = 'uploads/'.$_SESSION['user_username'] . '/' . $select_file_to_replace;
 
-        $date = give_me_date();
-        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has replace an image.' ."\n";
-        watch_action_log('access.log',$actions);
-
         if (!replace_one_upload_file("UPDATE `files` SET `nom_fichier` = :replace, `url_fichier` = :new_url
             WHERE `nom_fichier` = :select_file_to_replace AND `id_users` = :id_users",
             ['id_users' => $id_users,
@@ -217,6 +214,11 @@ function replace_name_img()
                 'new_url' => $new_url])){
             move_uploaded_file($tmp_name,$new_url);
             unlink($old_url);
+
+            $date = give_me_date();
+            $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has replace an image.' ."\n";
+            watch_action_log('access.log',$actions);
+
             return true;
         }
     }
