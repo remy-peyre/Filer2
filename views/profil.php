@@ -19,7 +19,7 @@
                 <div class="actions">
                     <form method="POST" action="?action=profil" enctype="multipart/form-data">
                         <p>UPLOAD :</p>
-                        <p>Fichier .jpg / .jpeg / .png / .pdf / .txt / .mp3 / .mp4
+                        <p>Files .jpg / .jpeg / .png / .pdf / .txt / .mp3 / .mp4
                             <br>
                             <input type="file" name="file">
                             <input type="submit" name="upload" value="uploader">
@@ -33,6 +33,14 @@
                             <br>
                             <input type="text" name="replace_files" placeholder="nom du fichier">
                             <input type="submit" value="remplacer" name="remplacer">
+                        </p>
+                    </form>
+                    <!--CREATE FOLDER-->
+                    <form class="form_replace" method="POST" action="?action=profil" enctype="multipart/form-data">
+                        <p>CREATE FOLDER :
+                            <br>
+                            Enter the name of the folder: <input type="text" name="name_folder" placeholder="Images">
+                            <input type="submit" value="create" name="create_folder">
                         </p>
                     </form>
                 </div>

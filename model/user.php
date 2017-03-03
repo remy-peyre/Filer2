@@ -223,3 +223,51 @@ function replace_name_img()
         }
     }
 }
+
+//CREATE FOLDER
+function create_folder($data)
+{
+    //mkdir ('uploads/' . $user['username']);
+    if (isset($_POST['create_folder'])) {
+        $name_folder = $_POST['name_folder'];
+        $user['username'] = $data['username'];
+
+        //$id_users = $_SESSION['user_id'];
+
+        mkdir('uploads/' . $user['username'] . '/' . $name_folder);
+
+        return true;
+    }
+}
+
+//delete FOLDER
+/*function delete_folder()
+{
+    if (isset($_POST['delete_folder'])) {
+        $name_folder = $_POST['name_folder_delete'];
+        //$id_users = $_SESSION['user_id'];
+        $user['username'] = $data['username'];
+
+
+        rmdir('uploads/' . $user['username'] . '/' . $name_folder);
+
+        return true;
+    }
+}*/
+
+//RENAME FOLDER
+/*function rename_folder()
+{
+    if (isset($_POST['rename_folder'])) {
+        $name_folder = $_POST['name_folder_rename'];
+        //$id_users = $_SESSION['user_id'];
+        $user['username'] = $data['username'];
+
+
+        rmdir('uploads/' . $user['username'] . '/' . $name_folder);
+        rename($old_url, $new_url);
+
+
+        return true;
+    }
+}*/

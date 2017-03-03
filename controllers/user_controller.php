@@ -59,6 +59,8 @@ function profil_action()
 
     replace_name_img();
 
+    create_folder();
+
     $result = show_upload_img();
 
 
