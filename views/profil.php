@@ -15,20 +15,23 @@
         </nav>
         <div class="flex_profil">
             <div class="contenu_profil">
-                <p class="p_action">Actions</p>
+                <p class="p_action">Actions :</p>
                 <div class="actions">
                     <form method="POST" action="?action=profil" enctype="multipart/form-data">
                         <p>UPLOAD :</p>
-                        <p>Files .jpg / .jpeg / .png / .pdf / .txt / .mp3 / .mp4
+                        <p>Choice a File<br>
+                            Click on Open and after Upload<br>
+                            Files .jpg / .jpeg / .png / .pdf / .txt / .mp3 / .mp4
                             <br>
                             <input type="file" name="file">
-                            <input type="submit" name="upload" value="uploader">
+                            <input type="submit" name="upload" value="Uploader">
                         </p>
                     </form>
                     <!--REPLACE-->
                     <form class="form_replace" method="POST" action="?action=profil" enctype="multipart/form-data">
-                        <p>REPLACE :
-                            <br>
+                        <p>REPLACE :<br>
+                            Choice a File ,Click on Open <br>
+                            Put the name of an existing file<br>
                             <input type="file" name="new_files">
                             <br>
                             <input type="text" name="replace_files" placeholder="nom du fichier">
@@ -36,16 +39,33 @@
                         </p>
                     </form>
                     <!--CREATE FOLDER-->
-                    <form class="form_replace" method="POST" action="?action=profil" enctype="multipart/form-data">
-                        <p>CREATE FOLDER :
-                            <br>
-                            Enter the name of the folder: <input type="text" name="name_folder" placeholder="Images">
-                            <input type="submit" value="create" name="create_folder">
-                        </p>
-                    </form>
+                    <div class="form_replace">
+                        <form method="POST" action="?action=profil" enctype="multipart/form-data">
+                            <p>CREATE A FOLDER :
+                                <br>
+                                Enter the name of the folder: <input type="text" name="name_folder" placeholder="Images">
+                                <input type="submit" value="create" name="create_folder">
+                            </p>
+                        </form>
+                        <!--<form method="POST" action="?action=profil" enctype="multipart/form-data">
+                            <p class="size_folder">DELETE A FOLDER :
+                                <br>
+                                Put the name of an existing folder: <input type="text" name="name_folder_delete" placeholder="Images">
+                                <input type="submit" value="delete" name="delete_folder">
+                            </p>
+                        </form>
+                        <form method="POST" action="?action=profil" enctype="multipart/form-data">
+                            <p class="size_folder">RENAME A FOLDER :
+                                <br>
+                                Put the name of an existing folder: <input type="text" name="name_folder_rename" placeholder="Images">
+                                <input type="submit" value="Rename" name="rename_folder">
+                            </p>
+                        </form>-->
+                    </div>
                 </div>
                 <?php
                 foreach($result as $file){
+                    echo $uploaderror;
                     echo "<div class='size_upload'>";
                         echo "<img class='img_upload' src=" . $file['url_fichier'] .
                         " alt=" . $file['nom_fichier'] . ">";
@@ -72,6 +92,18 @@
                     echo '</div>';
                 }
                 ?>
+                <!--
+                <div>
+                    <p class="categorie">Username :</p>
+                    <p><?php echo $username ?></p>
+                    <p class="categorie">Firstname :</p>
+                    <p><?php echo $firstname ?></p>
+                    <p class="categorie">Lastname :</p>
+                    <p><?php echo $lastname ?></p>
+                    <p class="categorie">Email :</p>
+                    <p><?php echo $email ?></p>
+                </div>
+                -->
             </div>
         </div>
     </body>

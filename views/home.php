@@ -26,7 +26,7 @@
                             echo '<br>';
                             echo '<p class="name_img">' . $file ['nom_fichier'] . '</p>';
                             echo '<br>';
-                            echo '<span class="name_img">Posted by user n°' . $file['id_users'] . '</span>';
+                            echo '<span class="name_img size_posted">Posted by user n°' . $file['id_users'] . '</span>';
                             echo '<br>';
                             echo '</div>';
                         }

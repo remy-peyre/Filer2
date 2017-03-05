@@ -56,6 +56,9 @@ function user_register($data)
     $actions = $date . ' -- ' .$user['username'] . ' has just registered.' ."\n";
     watch_action_log('access.log',$actions);
 
+    echo "Register with success";
+    echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
+
 }
 
 function user_check_login($data)
@@ -104,6 +107,8 @@ function upload_img_profil()
             $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has upload an image.' ."\n";
             watch_action_log('access.log',$actions);
 
+            echo "File upload with success";
+            echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
             return true;
         }
     }
@@ -118,7 +123,7 @@ function show_upload_img()
     return $data;
 }
 
-//FIND FILES is exist
+// cherche fichier par son nom
 function get_user_by_nom_fichier($nom_fichier)
 {
     $id_users = $_SESSION['user_id'];
@@ -129,7 +134,7 @@ function get_user_by_nom_fichier($nom_fichier)
     return $data;
 }
 
-// cherche fichier par son nom
+//FIND FILES is exist
 function one_only_img($nom_fichier)
 {
     $id_users = $_SESSION['user_id'];
@@ -138,6 +143,8 @@ function one_only_img($nom_fichier)
         ['user_id' => $id_users,
          'nom_fichier' => $nom_fichier]);
     if ($reqidimg == true){
+        echo "File upload already in database";
+        echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
 }
@@ -162,6 +169,8 @@ function delete_one_upload()
             $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has delete an image.' ."\n";
             watch_action_log('access.log',$actions);
 
+            echo "File delete with success";
+            echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
             return true;
         }
     }
@@ -190,6 +199,8 @@ function update_name_img()
             $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has rename an image.' ."\n";
             watch_action_log('access.log',$actions);
 
+            echo "File rename with success";
+            echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
             return true;
         }
     }
@@ -219,23 +230,36 @@ function replace_name_img()
             $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has replace an image.' ."\n";
             watch_action_log('access.log',$actions);
 
+            echo "File replace with success";
+            echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
             return true;
         }
     }
 }
 
 //CREATE FOLDER
-function create_folder($data)
+function create_folder($username)
 {
     //mkdir ('uploads/' . $user['username']);
     if (isset($_POST['create_folder'])) {
         $name_folder = $_POST['name_folder'];
         $user['username'] = $data['username'];
+        $id_users = $_SESSION['user_id'];
+        $username = $_SESSION['username'];
 
-        //$id_users = $_SESSION['user_id'];
+        $name = get_user_by_username();
 
-        mkdir('uploads/' . $user['username'] . '/' . $name_folder);
 
+        echo $name_folder;
+        echo $user['username'];//marche pas
+        echo $id_users;
+        echo $username;//marche pas
+        echo $name;
+
+        mkdir('uploads/' . $_SESSION['username'] . '/' . $name_folder);
+
+        echo "Folder create with success";
+        //echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
 }
@@ -251,6 +275,8 @@ function create_folder($data)
 
         rmdir('uploads/' . $user['username'] . '/' . $name_folder);
 
+        echo "Folder delete with success";
+        echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
 }*/
@@ -267,7 +293,8 @@ function create_folder($data)
         rmdir('uploads/' . $user['username'] . '/' . $name_folder);
         rename($old_url, $new_url);
 
-
+        echo "Folder rename with success";
+        echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
 }*/

@@ -15,6 +15,9 @@ function login_action()
         }
         else {
             $error = "Invalid username or password";
+            $date = give_me_date();
+            $actions = $date . ' -- Someone did not fill all the fields in LOGIN' ."\n";
+            watch_action_log('security.log',$actions);
         }
     }
     require('views/login.php');
@@ -37,7 +40,11 @@ function register_action()
             exit(0);
         }
         else {
-            $error = "Invalid data";
+            $error = "You must complete each field to register";
+
+            $date = give_me_date();
+            $actions = $date . ' -- Someone did not fill all the fields in REGISTER' ."\n";
+            watch_action_log('security.log',$actions);
         }    
     }
     require('views/register.php');
@@ -45,14 +52,27 @@ function register_action()
 
 function profil_action()
 {
-    $message = '';
-    if (upload_img_profil()){
-        $message = "je suis dans le if";
+    if (!empty($_SESSION['user_id']))
+    {
+        $user = get_user_by_id($_SESSION['user_id']);
+        //$user = get_user_by_id(1);
 
-        /*if (one_only_img()){
-            $message = "ce fichier existe deja"
-        }*/
+        //CAN SHOW INFO IN BDD
+        $username = $user['username'];
+        $firstname = $user['firstname'];
+        $lastname = $user['lastname'];
+        $email = $user['email'];
+
+
     }
+    else {
+        header('Location: ?action=login');
+        exit(0);
+
+    }
+
+    upload_img_profil();
+
     delete_one_upload();
 
     update_name_img();

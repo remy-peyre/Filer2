@@ -244,6 +244,10 @@ tr{
 .size_show_home{
     width: 20%;
 }
+.size_posted{
+    font-size: 12px;
+    padding-bottom: 1px;
+}
 /*--------- navbar -----------*/
 .img_nav{
     width: 16px;
@@ -295,6 +299,7 @@ tr{
 }
 .name_img{
     display: block;
+    height: 25px;
 }
 .logo_download{
     width: 25px;
@@ -304,4 +309,7 @@ tr{
     border-left: 2px solid #3B5998;
     padding-left: 5px;
     margin-left: 5px;
+}
+.size_folder{
+    font-size: 15px;
 }
