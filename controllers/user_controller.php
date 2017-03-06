@@ -81,6 +81,13 @@ function profil_action()
 
     create_folder();
 
+    delete_folder();
+
+    rename_folder();
+
+    $dir = 'uploads/' . $username;
+    $result_folder =dirToArray($dir);
+
     $result = show_upload_img();
 
 

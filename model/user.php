@@ -245,56 +245,86 @@ function create_folder($username)
         $name_folder = $_POST['name_folder'];
         $user['username'] = $data['username'];
         $id_users = $_SESSION['user_id'];
-        $username = $_SESSION['username'];
+        $username = $_SESSION['user_username'];
 
         $name = get_user_by_username();
 
+        mkdir('uploads/' . $username . '/' . $name_folder);
 
-        echo $name_folder;
-        echo $user['username'];//marche pas
-        echo $id_users;
-        echo $username;//marche pas
-        echo $name;
-
-        mkdir('uploads/' . $_SESSION['username'] . '/' . $name_folder);
+        $date = give_me_date();
+        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' create a folder.' ."\n";
+        watch_action_log('access.log',$actions);
 
         echo "Folder create with success";
-        //echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
+        echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
 }
 
+function dirToArray($dir) {
+
+    $result = array();
+
+    $cdir = scandir($dir);
+    foreach ($cdir as $key => $value)
+    {
+        if (!in_array($value,array(".","..")))
+        {
+            if (is_dir($dir . DIRECTORY_SEPARATOR . $value))
+            {
+                $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
+            }
+            else
+            {
+                $result[] = $value;
+            }
+        }
+    }
+
+    return $result;
+}
+
 //delete FOLDER
-/*function delete_folder()
+function delete_folder()
 {
     if (isset($_POST['delete_folder'])) {
         $name_folder = $_POST['name_folder_delete'];
-        //$id_users = $_SESSION['user_id'];
-        $user['username'] = $data['username'];
+        $username = $_SESSION['user_username'];
 
+        rmdir('uploads/' . $username . '/' . $name_folder);
 
-        rmdir('uploads/' . $user['username'] . '/' . $name_folder);
+        $date = give_me_date();
+        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has delete a folder.' ."\n";
+        watch_action_log('access.log',$actions);
 
         echo "Folder delete with success";
         echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
-}*/
+}
 
 //RENAME FOLDER
-/*function rename_folder()
+function rename_folder()
 {
     if (isset($_POST['rename_folder'])) {
         $name_folder = $_POST['name_folder_rename'];
         //$id_users = $_SESSION['user_id'];
         $user['username'] = $data['username'];
+        $name_hide_folder = $_POST['name_hide_folder'];
+        $username = $_SESSION['user_username'];
 
+        //echo 'uploads/' . $username . '/' . $name_hide_folder;
+        //echo 'uploads/' . $username . '/' . $name_folder;
 
-        rmdir('uploads/' . $user['username'] . '/' . $name_folder);
-        rename($old_url, $new_url);
+        rmdir('uploads/' . $username . '/' . $name_hide_folder);
+        mkdir('uploads/' . $username . '/' . $name_folder);
+
+        $date = give_me_date();
+        $actions = $date . ' -- ' .$_SESSION['user_username'] . ' has rename a folder.' ."\n";
+        watch_action_log('access.log',$actions);
 
         echo "Folder rename with success";
         echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
         return true;
     }
-}*/
+}

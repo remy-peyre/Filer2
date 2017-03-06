@@ -300,6 +300,7 @@ tr{
 .name_img{
     display: block;
     height: 25px;
+    width: 100%;
 }
 .logo_download{
     width: 25px;

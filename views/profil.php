@@ -47,25 +47,54 @@
                                 <input type="submit" value="create" name="create_folder">
                             </p>
                         </form>
-                        <!--<form method="POST" action="?action=profil" enctype="multipart/form-data">
+                        <form method="POST" action="?action=profil" enctype="multipart/form-data">
                             <p class="size_folder">DELETE A FOLDER :
                                 <br>
                                 Put the name of an existing folder: <input type="text" name="name_folder_delete" placeholder="Images">
                                 <input type="submit" value="delete" name="delete_folder">
                             </p>
                         </form>
-                        <form method="POST" action="?action=profil" enctype="multipart/form-data">
-                            <p class="size_folder">RENAME A FOLDER :
-                                <br>
-                                Put the name of an existing folder: <input type="text" name="name_folder_rename" placeholder="Images">
-                                <input type="submit" value="Rename" name="rename_folder">
-                            </p>
-                        </form>-->
                     </div>
                 </div>
                 <?php
+                foreach ($result_folder as $key => $value){
+                    //echo $key;
+                    /*echo '<br>';
+                    echo $value;*/
+                    if (is_array($value)){
+                        //echo $folder;
+                        echo "<div class='size_upload'>";
+                            echo "<img class='img_upload' src='assets/folder.png'>";
+                            //echo $folder['name_folder'];
+                            echo '<br>';
+                            echo '<span class="name_img">' . $key . '</span>';
+                            echo '<form method="POST" action="?action=profil" enctype="multipart/form-data">';
+                                echo '<br>';
+                                echo '<input style="display: none;" value=' . $key . ' type="text" name="name_folder_delete" placeholder="Images">';
+                                echo '<input type="submit" value="delete" name="delete_folder">';
+                            echo '</form>';
+                            echo '<form method="POST" action="?action=profil" enctype="multipart/form-data">';
+                                echo '<input style="display: none;" type="text" name="name_hide_folder" value="'. $key.'">';
+                                echo '<input type="text" name="name_folder_rename" placeholder="Images">';
+                                echo '<input type="submit" value="Rename" name="rename_folder">';
+                                echo '</p>';
+                            echo '</form>';
+                        echo '</div>';
+                    }
+                }
+                ?>
+                <?php
                 foreach($result as $file){
-                    echo $uploaderror;
+                    //$file_ext = strrchr($file['nom_fichier'], '.');
+                    /*if ($file_ext == '.txt') {
+                        echo "<img class='img' src='img/txt.png' alt=" . $file['nom_fichier'] . ">";
+
+                    }elseif ($file_ext == '.pdf'){
+                        echo "<img class='img' src='img/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                    }else{
+                        echo "<img class='img_upload' src=" . $file['url_fichier'] .
+                            " alt=" . $file['nom_fichier'] . ">";
+                    }*/
                     echo "<div class='size_upload'>";
                         echo "<img class='img_upload' src=" . $file['url_fichier'] .
                         " alt=" . $file['nom_fichier'] . ">";
@@ -76,13 +105,13 @@
                         echo '<form method="POST" action="?action=profil">';
                             echo '<input style="display: none;" type="text" name="sup_fichier" value="'. $file['nom_fichier'].'">';
                             echo '<br>';
-                            echo '<input type="submit" name="supprimer" value="supprimer">';
+                            echo '<input type="submit" name="supprimer" value="Delete">';
                         echo '</form>';
                         /*UPDATE*/
                         echo '<form method="POST" action="?action=profil">';
                             echo '<input style="display: none;" type="text" name="name_hide" value="'. $file['nom_fichier'].'">';
                             echo '<input type="text" name="rename" value="" placeholder="'. $file['nom_fichier']. '">';
-                            echo '<input type="submit" name="renommer" value="renommer">';
+                            echo '<input type="submit" name="renommer" value="Rename">';
                         echo '</form>';
                         /*DOWNLOAD*/
                         echo '<a href="' . $file['url_fichier'] . '" download="' . $file['nom_fichier'] . '">';
@@ -92,18 +121,6 @@
                     echo '</div>';
                 }
                 ?>
-                <!--
-                <div>
-                    <p class="categorie">Username :</p>
-                    <p><?php echo $username ?></p>
-                    <p class="categorie">Firstname :</p>
-                    <p><?php echo $firstname ?></p>
-                    <p class="categorie">Lastname :</p>
-                    <p><?php echo $lastname ?></p>
-                    <p class="categorie">Email :</p>
-                    <p><?php echo $email ?></p>
-                </div>
-                -->
             </div>
         </div>
     </body>
