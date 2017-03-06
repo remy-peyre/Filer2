@@ -85,19 +85,28 @@
                 ?>
                 <?php
                 foreach($result as $file){
-                    //$file_ext = strrchr($file['nom_fichier'], '.');
+                    $file_ext = strrchr($file['url_fichier'], '.');
                     /*if ($file_ext == '.txt') {
-                        echo "<img class='img' src='img/txt.png' alt=" . $file['nom_fichier'] . ">";
+                        echo "<img class='img' src='assets/img/txt.png' alt=" . $file['nom_fichier'] . ">";
 
                     }elseif ($file_ext == '.pdf'){
-                        echo "<img class='img' src='img/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                        echo "<img class='img' src='assets/img/pdf.png' alt=" . $file['nom_fichier'] . ">";
                     }else{
                         echo "<img class='img_upload' src=" . $file['url_fichier'] .
                             " alt=" . $file['nom_fichier'] . ">";
                     }*/
                     echo "<div class='size_upload'>";
-                        echo "<img class='img_upload' src=" . $file['url_fichier'] .
-                        " alt=" . $file['nom_fichier'] . ">";
+                        if ($file_ext == '.txt') {
+                            echo "<img class='img_pdf_txt' src='assets/txt.png' alt=" . $file['nom_fichier'] . ">";
+
+                        }elseif ($file_ext == '.pdf'){
+                            echo "<img class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                        }else{
+                            echo "<img class='img_upload' src=" . $file['url_fichier'] .
+                                " alt=" . $file['nom_fichier'] . ">";
+                        }
+                        /*echo "<img class='img_upload' src=" . $file['url_fichier'] .
+                        " alt=" . $file['nom_fichier'] . ">";*/
                         echo '<br>';
                         echo '<span class="name_img">' . $file ['nom_fichier'] . '</span>';
                         echo '<br>';

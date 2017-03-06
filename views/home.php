@@ -20,9 +20,19 @@
                     <div class="show_home">
                         <?php
                         foreach($result_home as $file){
+                            $file_ext = strrchr($file['url_fichier'], '.');
                             echo "<div class='size_show_home'>";
-                            echo "<img class='img_upload' src=" . $file['url_fichier'] .
-                                " alt=" . $file['nom_fichier'] . ">";
+                            if ($file_ext == '.txt') {
+                                echo "<img class='img_pdf_txt' src='assets/txt.png' alt=" . $file['nom_fichier'] . ">";
+
+                            }elseif ($file_ext == '.pdf'){
+                                echo "<img class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                            }else{
+                                echo "<img class='img_upload' src=" . $file['url_fichier'] .
+                                    " alt=" . $file['nom_fichier'] . ">";
+                            }
+                            /*echo "<img class='img_upload' src=" . $file['url_fichier'] .
+                                " alt=" . $file['nom_fichier'] . ">";*/
                             echo '<br>';
                             echo '<p class="name_img">' . $file ['nom_fichier'] . '</p>';
                             echo '<br>';
