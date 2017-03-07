@@ -58,21 +58,18 @@
                 </div>
                 <?php
                 foreach ($result_folder as $key => $value){
-                    //echo $key;
-                    /*echo '<br>';
-                    echo $value;*/
                     if (is_array($value)){
-                        //echo $folder;
                         echo "<div class='size_upload'>";
                             echo "<img class='img_upload' src='assets/folder.png'>";
-                            //echo $folder['name_folder'];
                             echo '<br>';
                             echo '<span class="name_img">' . $key . '</span>';
+                            /*DELETE FOLDER*/
                             echo '<form method="POST" action="?action=profil" enctype="multipart/form-data">';
                                 echo '<br>';
                                 echo '<input style="display: none;" value=' . $key . ' type="text" name="name_folder_delete" placeholder="Images">';
                                 echo '<input type="submit" value="delete" name="delete_folder">';
                             echo '</form>';
+                            /*RENAME FOLDER*/
                             echo '<form method="POST" action="?action=profil" enctype="multipart/form-data">';
                                 echo '<input style="display: none;" type="text" name="name_hide_folder" value="'. $key.'">';
                                 echo '<input type="text" name="name_folder_rename" placeholder="Images">';
@@ -86,21 +83,19 @@
                 <?php
                 foreach($result as $file){
                     $file_ext = strrchr($file['url_fichier'], '.');
-                    /*if ($file_ext == '.txt') {
-                        echo "<img class='img' src='assets/img/txt.png' alt=" . $file['nom_fichier'] . ">";
-
-                    }elseif ($file_ext == '.pdf'){
-                        echo "<img class='img' src='assets/img/pdf.png' alt=" . $file['nom_fichier'] . ">";
-                    }else{
-                        echo "<img class='img_upload' src=" . $file['url_fichier'] .
-                            " alt=" . $file['nom_fichier'] . ">";
-                    }*/
                     echo "<div class='size_upload'>";
                         if ($file_ext == '.txt') {
                             echo "<img class='img_pdf_txt' src='assets/txt.png' alt=" . $file['nom_fichier'] . ">";
-
                         }elseif ($file_ext == '.pdf'){
                             echo "<img class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                        }/*elseif ($file_ext == '.xlxs'){ //excel
+                            echo "<img class='img_pdf_txt' src='assets/xlsx.png' alt=" . $file['nom_fichier'] . ">";
+                        }*/elseif ($file_ext == '.mp3'){ //audio
+                            echo "<audio class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                            echo "</audio>";
+                        }elseif ($file_ext == '.mp4'){ //video
+                            echo "<iframe class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                            echo "</iframe>";
                         }else{
                             echo "<img class='img_upload' src=" . $file['url_fichier'] .
                                 " alt=" . $file['nom_fichier'] . ">";

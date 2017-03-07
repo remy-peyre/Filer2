@@ -260,7 +260,7 @@ function create_folder($username)
         return true;
     }
 }
-
+//Liste les fichiers et dossiers dans un dossier
 function dirToArray($dir) {
 
     $result = array();
@@ -308,8 +308,6 @@ function rename_folder()
 {
     if (isset($_POST['rename_folder'])) {
         $name_folder = $_POST['name_folder_rename'];
-        //$id_users = $_SESSION['user_id'];
-        $user['username'] = $data['username'];
         $name_hide_folder = $_POST['name_hide_folder'];
         $username = $_SESSION['user_username'];
 
