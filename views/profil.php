@@ -99,7 +99,7 @@
                             echo "<audio class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
                             echo "</audio>";
                         }elseif ($file_ext == '.mp4'){ //video
-                            echo "<video class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                            echo "<video class='img_pdf_txt' src=" . $file['url_fichier'] ." alt=" . $file['nom_fichier'] . " controls autobuffer>";
                             echo "</video>";
                         }else{
                             echo "<img class='img_upload' src=" . $file['url_fichier'] .
