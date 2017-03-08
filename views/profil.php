@@ -10,7 +10,7 @@
             <ul>
                 <li><a href='?action=home'>Homepage</a></li>
                 <li><a href='?action=profil'>My files</a></li>
-                <li><a href='?action=logout'><img class="img_nav" src="assets/logout.png">Log out</a></li>
+                <li><a href='?action=logout'><img class="img_nav" src="assets/logout.png" alt="coucou">Log out</a></li>
             </ul>
         </nav>
         <div class="flex_profil">
@@ -87,11 +87,19 @@
                         if ($file_ext == '.txt') {
                             echo "<img class='img_pdf_txt' src='assets/txt.png' alt=" . $file['nom_fichier'] . ">";
                             echo '<form method="POST" action="?action=profil">';
-                            echo '<textarea name="modif_txt"></textarea>';
+
+                            echo "<textarea name='txt_content'>" . file_get_contents($file['url_fichier']) . "</textarea>";
+                            echo "<input style='display: none;' type='text' name='url_txt' value=" . $file['url_fichier'] . ">";
                             echo '<input type="submit" name="modif_a_txt" value="Edit" />';
                             echo'</form>';
                         }elseif ($file_ext == '.pdf'){
                             echo "<img class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                            echo '<form method="POST" action="?action=profil">';
+
+                            echo "<textarea name='txt_content'>" . file_get_contents($file['url_fichier']) . "</textarea>";
+                            echo "<input style='display: none;' type='text' name='url_txt' value=" . $file['url_fichier'] . ">";
+                            echo '<input type="submit" name="modif_a_txt" value="Edit" />';
+                            echo'</form>';
                         }/*elseif ($file_ext == '.xlxs'){ //excel
                             echo "<embed class='img_pdf_txt' src='assets/xlsx.png' alt=" . $file['nom_fichier'] . ">";
                             echo '</embed>';
@@ -99,7 +107,7 @@
                             echo "<audio class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
                             echo "</audio>";
                         }elseif ($file_ext == '.mp4'){ //video
-                            echo "<video class='img_pdf_txt' src=" . $file['url_fichier'] ." alt=" . $file['nom_fichier'] . " controls autobuffer>";
+                            echo "<video class='img_pdf_txt' src=" . $file['url_fichier'] ."  controls>";
                             echo "</video>";
                         }else{
                             echo "<img class='img_upload' src=" . $file['url_fichier'] .

@@ -85,6 +85,8 @@ function profil_action()
 
     rename_folder();
 
+    reedit();
+
     $dir = 'uploads/' . $username;
     $result_folder =dirToArray($dir);
 

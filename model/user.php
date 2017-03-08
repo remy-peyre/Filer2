@@ -326,3 +326,25 @@ function rename_folder()
         return true;
     }
 }
+
+//EDIT files
+function reedit()
+{
+    if (isset($_POST['modif_a_txt'])) {
+
+
+        $file = $_POST['url_txt'];
+        $txt_content = $_POST['txt_content'];
+        // save the text contents
+        file_put_contents($file, $txt_content);
+
+        $date = give_me_date();
+        $actions = $date . ' -- ' . $_SESSION['user_username'] . ' has edit a file.' . "\n";
+        watch_action_log('access.log', $actions);
+
+        echo "File edit with success";
+        echo '<meta http-equiv="refresh" content="1;URL=?action=profil">';
+        return true;
+    }
+
+}
