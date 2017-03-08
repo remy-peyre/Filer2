@@ -248,6 +248,10 @@ tr{
     font-size: 12px;
     padding-bottom: 1px;
 }
+.cloud{
+    margin-left: 25%;
+    margin-bottom: 50px;
+}
 /*--------- navbar -----------*/
 .img_nav{
     width: 16px;

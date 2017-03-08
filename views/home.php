@@ -18,6 +18,7 @@
                 <div class="colum_container">
                     <h4 class="center_title_home">All uploads</h4>
                     <div class="show_home">
+                        <img class="cloud" src="assets/cloud.png">
                         <?php
                         /*foreach($result_home as $file){
                             $file_ext = strrchr($file['url_fichier'], '.');

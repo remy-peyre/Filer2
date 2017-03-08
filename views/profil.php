@@ -24,7 +24,7 @@
                             Files .jpg / .jpeg / .png / .pdf / .txt / .mp3 / .mp4
                             <br>
                             <input type="file" name="file">
-                            <input type="submit" name="upload" value="Uploader">
+                            <input type="submit" name="upload" value="Upload">
                         </p>
                     </form>
                     <!--REPLACE-->
@@ -35,7 +35,7 @@
                             <input type="file" name="new_files">
                             <br>
                             <input type="text" name="replace_files" placeholder="nom du fichier">
-                            <input type="submit" value="remplacer" name="remplacer">
+                            <input type="submit" value="replace" name="remplacer">
                         </p>
                     </form>
                     <!--CREATE FOLDER-->
@@ -99,8 +99,8 @@
                             echo "<audio class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
                             echo "</audio>";
                         }elseif ($file_ext == '.mp4'){ //video
-                            echo "<iframe class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
-                            echo "</iframe>";
+                            echo "<video class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
+                            echo "</video>";
                         }else{
                             echo "<img class='img_upload' src=" . $file['url_fichier'] .
                                 " alt=" . $file['nom_fichier'] . ">";
