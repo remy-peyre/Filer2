@@ -86,10 +86,15 @@
                     echo "<div class='size_upload'>";
                         if ($file_ext == '.txt') {
                             echo "<img class='img_pdf_txt' src='assets/txt.png' alt=" . $file['nom_fichier'] . ">";
+                            echo '<form method="POST" action="?action=profil">';
+                            echo '<textarea name="modif_txt"></textarea>';
+                            echo '<input type="submit" name="modif_a_txt" value="Edit" />';
+                            echo'</form>';
                         }elseif ($file_ext == '.pdf'){
                             echo "<img class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
                         }/*elseif ($file_ext == '.xlxs'){ //excel
-                            echo "<img class='img_pdf_txt' src='assets/xlsx.png' alt=" . $file['nom_fichier'] . ">";
+                            echo "<embed class='img_pdf_txt' src='assets/xlsx.png' alt=" . $file['nom_fichier'] . ">";
+                            echo '</embed>';
                         }*/elseif ($file_ext == '.mp3'){ //audio
                             echo "<audio class='img_pdf_txt' src='assets/pdf.png' alt=" . $file['nom_fichier'] . ">";
                             echo "</audio>";
