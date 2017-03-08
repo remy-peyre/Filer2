@@ -19,7 +19,7 @@
                     <h4 class="center_title_home">All uploads</h4>
                     <div class="show_home">
                         <?php
-                        foreach($result_home as $file){
+                        /*foreach($result_home as $file){
                             $file_ext = strrchr($file['url_fichier'], '.');
                             echo "<div class='size_show_home'>";
                             if ($file_ext == '.txt') {
@@ -32,14 +32,14 @@
                                     " alt=" . $file['nom_fichier'] . ">";
                             }
                             /*echo "<img class='img_upload' src=" . $file['url_fichier'] .
-                                " alt=" . $file['nom_fichier'] . ">";*/
+                                " alt=" . $file['nom_fichier'] . ">";
                             echo '<br>';
                             echo '<p class="name_img">' . $file ['nom_fichier'] . '</p>';
                             echo '<br>';
                             echo '<span class="name_img size_posted">Posted by user n°' . $file['id_users'] . '</span>';
                             echo '<br>';
                             echo '</div>';
-                        }
+                        }*/
                         ?>
                     </div>
                 </div>
