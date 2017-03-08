@@ -8,6 +8,7 @@ File:
     -rename
     -download
     -replace
+    -change content file
     
 Folder:
     -create folder
@@ -20,5 +21,4 @@ LOG:
     
 missing:
     -move file
-    -change content file
     
